@@ -1,0 +1,42 @@
+MyStrategy.cpp
+MyStrategy.cpp(12) : warning C4100: 'game' : unreferenced formal parameter
+MyStrategy.cpp(12) : warning C4100: 'world' : unreferenced formal parameter
+MyStrategy.cpp(12) : warning C4100: 'self' : unreferenced formal parameter
+RemoteProcessClient.cpp
+Runner.cpp
+Strategy.cpp
+Game.cpp
+Hockeyist.cpp
+Move.cpp
+Player.cpp
+PlayerContext.cpp
+Puck.cpp
+Unit.cpp
+World.cpp
+ActiveSocket.cpp
+HTTPActiveSocket.cpp
+PassiveSocket.cpp
+SimpleSocket.cpp
+Generating Code...
+Microsoft (R) Incremental Linker Version 12.00.21005.1
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:MyStrategy.exe 
+/stack:268435456 
+ws2_32.lib 
+MyStrategy.obj 
+RemoteProcessClient.obj 
+Runner.obj 
+Strategy.obj 
+Game.obj 
+Hockeyist.obj 
+Move.obj 
+Player.obj 
+PlayerContext.obj 
+Puck.obj 
+Unit.obj 
+World.obj 
+ActiveSocket.obj 
+HTTPActiveSocket.obj 
+PassiveSocket.obj 
+SimpleSocket.obj 
