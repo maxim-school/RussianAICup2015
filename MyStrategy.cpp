@@ -10,9 +10,10 @@ using namespace model;
 using namespace std;
 
 void MyStrategy::move(const Hockeyist& self, const World& world, const Game& game, Move& move) {
-    move.setSpeedUp(-1.0);
-    move.setTurn(PI);
-    move.setAction(STRIKE);
+	if (world.getPuck().getOwnerHockeyistId() == self.getId()){ move.setAction(SWING); }
+	else{
+		move.setAction(TAKE_PUCK);
+	};
 }
 
 MyStrategy::MyStrategy() { }
