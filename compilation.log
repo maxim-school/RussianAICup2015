@@ -1,9 +1,15 @@
 MyStrategy.cpp
 MyStrategy.cpp(12) : warning C4100: 'game' : unreferenced formal parameter
-MyStrategy.cpp(12) : warning C4100: 'world' : unreferenced formal parameter
-MyStrategy.cpp(12) : warning C4100: 'self' : unreferenced formal parameter
 RemoteProcessClient.cpp
+c:\users\admin\documents\github\russianaicup2015\csimplesocket\SimpleSocket.h(405) : warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
+c:\users\admin\documents\github\russianaicup2015\csimplesocket\SimpleSocket.h(413) : warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
 Runner.cpp
+c:\users\admin\documents\github\russianaicup2015\csimplesocket\SimpleSocket.h(405) : warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
+c:\users\admin\documents\github\russianaicup2015\csimplesocket\SimpleSocket.h(413) : warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
 Strategy.cpp
 Game.cpp
 Hockeyist.cpp
@@ -14,11 +20,37 @@ Puck.cpp
 Unit.cpp
 World.cpp
 ActiveSocket.cpp
+c:\users\admin\documents\github\russianaicup2015\csimplesocket\SimpleSocket.h(405) : warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
+c:\users\admin\documents\github\russianaicup2015\csimplesocket\SimpleSocket.h(413) : warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
+csimplesocket\ActiveSocket.cpp(66) : warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(2238) : see declaration of 'gethostbyname'
+csimplesocket\ActiveSocket.cpp(147) : warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(2238) : see declaration of 'gethostbyname'
+csimplesocket\ActiveSocket.cpp(206) : warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(2238) : see declaration of 'gethostbyname'
 HTTPActiveSocket.cpp
 PassiveSocket.cpp
+c:\users\admin\documents\github\russianaicup2015\csimplesocket\SimpleSocket.h(405) : warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
+c:\users\admin\documents\github\russianaicup2015\csimplesocket\SimpleSocket.h(413) : warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
+csimplesocket\PassiveSocket.cpp(82) : warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1850) : see declaration of 'inet_addr'
+csimplesocket\PassiveSocket.cpp(96) : warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1850) : see declaration of 'inet_addr'
+csimplesocket\PassiveSocket.cpp(170) : warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1850) : see declaration of 'inet_addr'
 SimpleSocket.cpp
+c:\users\admin\documents\github\russianaicup2015\csimplesocket\SimpleSocket.h(405) : warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
+c:\users\admin\documents\github\russianaicup2015\csimplesocket\SimpleSocket.h(413) : warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
+csimplesocket\SimpleSocket.cpp(180) : warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+        C:\Program Files (x86)\Windows Kits\8.1\include\um\winsock2.h(1850) : see declaration of 'inet_addr'
 Generating Code...
-Microsoft (R) Incremental Linker Version 12.00.21005.1
+Microsoft (R) Incremental Linker Version 12.00.31101.0
 Copyright (C) Microsoft Corporation.  All rights reserved.
 
 /out:MyStrategy.exe 
