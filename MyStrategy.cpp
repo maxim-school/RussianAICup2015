@@ -31,7 +31,9 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	}*/
 	int defence=0;
 	int attack=1;
+	bool flag = false;
 	if (world.getPuck().getOwnerHockeyistId() == self.getId()){ 
+		flag = true;
 		if (self.getTeammateIndex() == 1){
 			attack = 1;
 			defence = 0;
@@ -40,16 +42,36 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			attack = 0;
 			defence = 1;
 		}
-		
 	 }
-
+	if (self.getTeammateIndex() == attack){
+		if (flag == true){
+			move.setTurn(self.getAngleTo(world.getWidth(),world.getHeight() / 2));
+			move.setAction(STRIKE);
+		}
+		else{
+			move.setTurn(self.getAngleTo(world.getPuck()));
+			move.setSpeedUp(0.7);
+			move.setAction(TAKE_PUCK);
+		}
+	}
+	if (self.getTeammateIndex() == defence){
+		move.setTurn(self.getAngleTo(100,world.getHeight() / 2));
+		move.setSpeedUp(0.5);
+		move.setAction(TAKE_PUCK);
+		/*if (self.getX() > 200, self.getX() < 100, self.getY() < 360, self.getY() > 560){
+			move.setTurn(self.getAngleTo(105, 400));
+			move.setSpeedUp(0.5);
+		}
+		else
+		{
+			move.setTurn(self.getAngleTo(world.getPuck()));
+			move.setAction(TAKE_PUCK);
+		}*/
+	}
 	
 
 
-	if (world.getPuck().getOwnerHockeyistId() == self.getId()){ move.setAction(SWING); }
-	else{
-		move.setAction(TAKE_PUCK);
-	};
+	
 
 }
 
