@@ -55,11 +55,15 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 		}
 	}
 	if (self.getTeammateIndex() == defence){
-		move.setTurn(self.getAngleTo(100,world.getHeight() / 2));
+		if (flag = true){
+			
+		}
+		else{}
+		move.setTurn(self.getAngleTo(155,world.getHeight() / 2));
 		move.setSpeedUp(0.5);
 		move.setAction(TAKE_PUCK);
 		/*if (self.getX() > 200, self.getX() < 100, self.getY() < 360, self.getY() > 560){
-			move.setTurn(self.getAngleTo(105, 400));
+			move.setTurn(self.	getAngleTo(105, 400));
 			move.setSpeedUp(0.5);
 		}
 		else
