@@ -29,9 +29,13 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 		}
 
 	}*/
-	int defence=0;
-	int attack=1;
+	Player Me = world.getMyPlayer();
+	Player rival = world.getOpponentPlayer();   // RIVAL - "Противник"
+	int defence=1;
+	int attack=0;
 	bool flag = false;
+
+	// Определение владельца шайбы
 	if (world.getPuck().getOwnerHockeyistId() == self.getId()){ 
 		flag = true;
 		if (self.getTeammateIndex() == 1){
@@ -43,6 +47,9 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			defence = 1;
 		}
 	 }
+
+
+	// Тактика Нападающего
 	if (self.getTeammateIndex() == attack){
 		if (flag == true){
 			move.setTurn(self.getAngleTo(world.getWidth(),world.getHeight() / 2));
@@ -54,23 +61,22 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			move.setAction(TAKE_PUCK);
 		}
 	}
+
+	// Тактика Защитника
 	if (self.getTeammateIndex() == defence){
-		if (flag = true){
-			
+		
+		
+		if (flag == true){
+			move.setTurn(self.getAngleTo(Me.getNetRight()+90, (Me.getNetTop()+Me.getNetBottom())/2));
+			double Dist = self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2)/100;
+			if (Dist > 1.0){ Dist = 1.0; }
+			move.setSpeedUp(Dist);
 		}
-		else{}
-		move.setTurn(self.getAngleTo(155,world.getHeight() / 2));
-		move.setSpeedUp(0.5);
-		move.setAction(TAKE_PUCK);
-		/*if (self.getX() > 200, self.getX() < 100, self.getY() < 360, self.getY() > 560){
-			move.setTurn(self.	getAngleTo(105, 400));
-			move.setSpeedUp(0.5);
-		}
-		else
-		{
+		else{
 			move.setTurn(self.getAngleTo(world.getPuck()));
 			move.setAction(TAKE_PUCK);
-		}*/
+		}
+		
 	}
 	
 
