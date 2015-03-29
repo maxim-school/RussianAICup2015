@@ -12,23 +12,7 @@ using namespace std;
 
 void MyStrategy::move(const Hockeyist& self, const World& world, const Game& game, Move& move) {
 
-    //move.setSpeedUp(-1.0);
-    //move.setTurn(PI);
-    //move.setAction(STRIKE); ///
-	/*double num;
- 	if (world.getPuck().getOwnerHockeyistId() == self.getId()){ move.setSpeedUp(0.7); }
-	if (self.getId() == 0){
-		if (self.getX() > 200, self.getX() < 100, self.getY() < 360, self.getY() > 560){
-			move.setTurn(self.getAngleTo(105, 400));
-			move.setSpeedUp(0.6);
-		}
-		else
-		{
-			move.setTurn(self.getAngleTo(world.getPuck()));
-			move.setAction(TAKE_PUCK);
-		}
-
-	}*/
+ 
 	Player Me = world.getMyPlayer();
 	Player rival = world.getOpponentPlayer();   // RIVAL - "Противник"
 	int defence=1;
