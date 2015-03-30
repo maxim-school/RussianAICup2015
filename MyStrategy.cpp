@@ -9,13 +9,13 @@
 using namespace model;
 using namespace std;
 
-double FriendIndex(const Hockeyist& self){
+/*double FriendIndex(const Hockeyist& self){
 	if (self.getTeammateIndex == 1){ return 0; }
 	else
 	{
 		return 1;
 	}
-}
+}*/
 void MyStrategy::move(const Hockeyist& self, const World& world, const Game& game, Move& move) {
 
  
@@ -24,9 +24,13 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	int defence=1;
 	int attack=0;
 	bool flag = false;
-	double FriendId = FriendIndex(self);
+	double FriendId;// = FriendIndex(self);
 	// Определение владельца шайбы
-
+	if (self.getTeammateIndex == 1){ FriendId= 0; }
+	else
+	{
+		FriendId= 1;
+	}
 	if (world.getPuck().getOwnerPlayerId() == Me.getId()){
 		flag = true;
 		if (world.getPuck().getOwnerHockeyistId() == self.getId){
