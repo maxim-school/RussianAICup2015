@@ -10,7 +10,7 @@ using namespace model;
 using namespace std;
 
 double FriendIndex(const Hockeyist& self){
-	if (self.getTeammateIndex == 1){ return 0; }
+	if (self.getTeammateIndex() == 1){ return 0; }
 	else
 	{
 		return 1;
@@ -29,7 +29,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 
 	if (world.getPuck().getOwnerPlayerId() == Me.getId()){
 		flag = true;
-		if (world.getPuck().getOwnerHockeyistId() == self.getId){
+		if (world.getPuck().getOwnerHockeyistId() == self.getId()){
 			attack = self.getTeammateIndex();
 			defence = FriendId;
 		}
