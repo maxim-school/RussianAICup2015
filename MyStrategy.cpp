@@ -1,4 +1,5 @@
 #include "MyStrategy.h"
+#include <fstream>
 
 #define PI 3.14159265358979323846
 #define _USE_MATH_DEFINES
@@ -28,11 +29,19 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	bool flag = false;
 	double FriendId = FriendIndex(self);
 	// Определение владельца шайбы
-	if (self.getTeammateIndex() == 1){ FriendId= 0; }
-	else
-	{
-		FriendId= 1;
+	if (self.getTeammateIndex() == 0){ 
+		std::ofstream fout("DIST.txt");
+		fout << self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2);
+		fout << std::endl;
+		fout.close();
 	}
+	if (self.getTeammateIndex() == 0){
+		std::ofstream fout("DIST.txt", std::ios::app);
+		fout << self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2);
+		fout << std::endl;
+		fout.close();
+	}
+
 	if (world.getPuck().getOwnerPlayerId() == Me.getId()){
 		flag = true;
 		if (world.getPuck().getOwnerHockeyistId() == self.getId()){
@@ -44,13 +53,46 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			defence = self.getTeammateIndex();
 		}
 
+	}else{
+		std::ifstream fin("DIST.txt", std::ios::app);
+		int H_0;
+		int H_1;
+		fin >> H_0;
+		fin >> H_1;
+		fin.close();
+		if (self.getTeammateIndex() == 0){
+			if (self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2) < H_1){
+				attack = FriendId;
+				defence = self.getTeammateIndex();
+			}
+			else{
+				attack = self.getTeammateIndex();
+				defence = FriendId;
+			}
+		}
+		else{
+			if (self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2) < H_0){
+				attack = self.getTeammateIndex();
+				defence = FriendId;
+			}
+			else{
+				attack = self.getTeammateIndex();
+				defence = FriendId;
+			}
+		}
+
+		
 	}
+
+
+	
+
 
 	// Тактика Нападающего
 	if (self.getTeammateIndex() == attack){
 		if (flag == true){
 			move.setTurn(self.getAngleTo(world.getWidth(),world.getHeight() / 2));
-			move.setAction(STRIKE);
+			//move.setAction(STRIKE);
 		}
 		else{
 			move.setTurn(self.getAngleTo(world.getPuck()));
@@ -65,7 +107,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 		
 		if (flag == true){
 			move.setTurn(self.getAngleTo(Me.getNetRight()+90, (Me.getNetTop()+Me.getNetBottom())/2));
-			double Speed = self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2)/100;
+			double Speed = self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2)/200;
 			if (Speed > 1.0){ Speed = 1.0; }
 			move.setSpeedUp(Speed);
 		}
