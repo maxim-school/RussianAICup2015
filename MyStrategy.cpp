@@ -72,8 +72,8 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 		}
 		else{
 			if (self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2) < H_0){
-				attack = self.getTeammateIndex();
-				defence = FriendId;
+				attack = FriendId;
+				defence = self.getTeammateIndex();
 			}
 			else{
 				attack = self.getTeammateIndex();
