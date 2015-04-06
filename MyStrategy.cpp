@@ -29,18 +29,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	bool flag = false;
 	double FriendId = FriendIndex(self);
 	// Определение владельца шайбы
-	if (self.getTeammateIndex() == 0){ 
-		std::ofstream fout("DIST.txt");
-		fout << self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2);
-		fout << std::endl;
-		fout.close();
-	}
-	if (self.getTeammateIndex() == 0){
-		std::ofstream fout("DIST.txt", std::ios::app);
-		fout << self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2);
-		fout << std::endl;
-		fout.close();
-	}
+	
 
 	if (world.getPuck().getOwnerPlayerId() == Me.getId()){
 		flag = true;
@@ -55,8 +44,8 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 
 	}else{
 		std::ifstream fin("DIST.txt", std::ios::app);
-		int H_0;
-		int H_1;
+		double H_0;
+		double H_1;
 		fin >> H_0;
 		fin >> H_1;
 		fin.close();
@@ -84,15 +73,26 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 		
 	}
 
-
 	
-
-
+	
+	if (self.getTeammateIndex() == 0){
+		std::ofstream fout("DIST.txt");
+		fout << self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2);
+		fout << std::endl;
+		fout.close();
+	}
+	if (self.getTeammateIndex() == 1){
+		std::ofstream fout("DIST.txt", std::ios::app);
+		fout << self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2);
+		fout << std::endl;
+		fout.close();
+	}
+	
 	// Тактика Нападающего
 	if (self.getTeammateIndex() == attack){
 		if (flag == true){
 			move.setTurn(self.getAngleTo(world.getWidth(),world.getHeight() / 2));
-			//move.setAction(STRIKE);
+			move.setAction(STRIKE);
 		}
 		else{
 			move.setTurn(self.getAngleTo(world.getPuck()));
@@ -100,7 +100,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			move.setAction(TAKE_PUCK);
 		}
 	}
-
+	
 	// Тактика Защитника
 	if (self.getTeammateIndex() == defence){
 		
@@ -118,7 +118,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 		
 	}
 	
-
+	
 
 	
 
