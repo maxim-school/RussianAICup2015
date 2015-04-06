@@ -76,8 +76,8 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 				defence = FriendId;
 			}
 			else{
-				attack = FriendId;
-				defence = self.getTeammateIndex();â
+				attack = self.getTeammateIndex();
+				defence = FriendId;
 			}
 		}
 
@@ -92,7 +92,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	if (self.getTeammateIndex() == attack){
 		if (flag == true){
 			move.setTurn(self.getAngleTo(world.getWidth(),world.getHeight() / 2));
-			move.setAction(STRIKE);
+			//move.setAction(STRIKE);
 		}
 		else{
 			move.setTurn(self.getAngleTo(world.getPuck()));
