@@ -111,7 +111,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 		double Speed = self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2) / 200;
 		if (flag == true){
 
-			if (self.getX() > (Me.getNetRight() + 60), self.getX() < (Me.getNetRight() + 120), self.getY() > (Me.getNetTop() + 70), self.getY() < (Me.getNetBottom() - 70)){
+			if (self.getX() > (Me.getNetRight() + 60) & self.getX() < (Me.getNetRight() + 120) & self.getY() > (Me.getNetTop() + 70) & self.getY() < (Me.getNetBottom() - 70)){
 				move.setTurn(self.getAngleTo(world.getPuck()));
 				move.setAction(TAKE_PUCK);
 			}
@@ -124,7 +124,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 		else{
 			
 
-			if (self.getX() > (Me.getNetRight() + 60), self.getX() < (Me.getNetRight() + 120), self.getY() > (Me.getNetTop() + 70), self.getY() < (Me.getNetBottom() - 70)){
+			if (self.getX() > (Me.getNetRight() + 60) & self.getX() < (Me.getNetRight() + 120) & self.getY() > (Me.getNetTop() + 40) & self.getY() < (Me.getNetBottom() - 40)){
 				move.setTurn(self.getAngleTo(world.getPuck()));
 				move.setAction(TAKE_PUCK);
 			}
