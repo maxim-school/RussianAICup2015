@@ -91,8 +91,12 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	// Тактика Нападающего
 	if (self.getTeammateIndex() == attack){
 		if (flag == true){
-			move.setTurn(self.getAngleTo(world.getWidth(),world.getHeight() / 2));
-			move.setAction(STRIKE);
+			move.setTurn(self.getAngleTo(world.getWidth(), world.getHeight() / 2));
+			if (self.getX() > world.getHeight() / 2){
+				move.setAction(STRIKE);
+			} else{
+				move.setSpeedUp(1.0);
+			}
 		}
 		else{
 			move.setTurn(self.getAngleTo(world.getPuck()));
