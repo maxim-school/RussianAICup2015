@@ -104,18 +104,31 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	// Тактика Защитника
 	if (self.getTeammateIndex() == defence){
 		
-		
+		double Speed = self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2) / 200;
 		if (flag == true){
-			move.setTurn(self.getAngleTo(Me.getNetRight()+90, (Me.getNetTop()+Me.getNetBottom())/2));
-			double Speed = self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2)/200;
-			if (Speed > 1.0){ Speed = 1.0; }
-			move.setSpeedUp(Speed);
+
+			if (self.getX() > (Me.getNetRight() + 60), self.getX() < (Me.getNetRight() + 120), self.getY() > (Me.getNetTop() + 70), self.getY() < (Me.getNetBottom() - 70)){
+				move.setTurn(self.getAngleTo(world.getPuck()));
+				move.setAction(TAKE_PUCK);
+			}
+			else{
+				move.setTurn(self.getAngleTo(Me.getNetRight() + 90, world.getHeight() / 2));
+				if (Speed > 1.0){ Speed = 1.0; }
+				move.setSpeedUp(Speed);
+			}
 		}
 		else{
-			move.setTurn(self.getAngleTo(Me.getNetRight() + 90, world.getHeight() / 2) + 180);
-			double Speed = self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2) / -200;
-			if (Speed < -1.0){ Speed = -1.0; }
-			move.setSpeedUp(Speed);
+			
+
+			if (self.getX() > (Me.getNetRight() + 60), self.getX() < (Me.getNetRight() + 120), self.getY() > (Me.getNetTop() + 70), self.getY() < (Me.getNetBottom() - 70)){
+				move.setTurn(self.getAngleTo(world.getPuck()));
+				move.setAction(TAKE_PUCK);
+			}
+			else{
+				move.setTurn(self.getAngleTo(Me.getNetRight() + 90, world.getHeight() / 2));
+				if (Speed > 1.0){ Speed = 1.0; }
+				move.setSpeedUp(Speed);
+			}
 			
 		}
 		
