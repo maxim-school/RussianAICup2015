@@ -19,6 +19,23 @@ double FriendIndex(const Hockeyist& self){
 		return 1;
 	}
 }
+
+bool HockFrontOfMyGoal(const Hockeyist& self, const Player& Me){
+	if (self.getX() > (Me.getNetRight() + 60) & self.getX() < (Me.getNetRight() + 120) & self.getY() > (Me.getNetTop() + 40) & self.getY() < (Me.getNetBottom() - 40)){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+double SpeedGradualDecrease(const Hockeyist& self, const Player& Me ){
+	double Speed = self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2) / 200;
+	if (Speed > 1.0){ Speed = 1.0; }
+	return Speed;
+}
+
+
 void MyStrategy::move(const Hockeyist& self, const World& world, const Game& game, Move& move) {
 
  
@@ -49,32 +66,29 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 		fin >> H_0;
 		fin >> H_1;
 		fin.close();
-		if (self.getTeammateIndex() == 0){
-			if (self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2) < H_1){
-				attack = FriendId;
-				defence = self.getTeammateIndex();
-			}
-			else{
-				attack = self.getTeammateIndex();
-				defence = FriendId;
-			}
+		double F_Dist;
+		if (self.getTeammateIndex() == 0){ F_Dist = H_1; }
+		else { F_Dist = H_0; }
+
+
+		//Определение атакующего и защитника по положению относительно собственных ворот
+		if (self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2) < F_Dist){
+			attack = FriendId;
+			defence = self.getTeammateIndex();
 		}
 		else{
-			if (self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2) < H_0){
-				attack = FriendId;
-				defence = self.getTeammateIndex();
-			}
-			else{
-				attack = self.getTeammateIndex();
-				defence = FriendId;
-			}
+			attack = self.getTeammateIndex();
+			defence = FriendId;
 		}
 
-		
-	}
 
+	}
 	
 	
+	
+
+
+	// Запись в файл расстояний до ворот
 	if (self.getTeammateIndex() == 0){
 		std::ofstream fout("DIST.txt");
 		fout << self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2);
@@ -87,6 +101,10 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 		fout << std::endl;
 		fout.close();
 	}
+
+
+
+
 	
 	// Тактика Нападающего
 	if (self.getTeammateIndex() == attack){
@@ -104,34 +122,36 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			move.setAction(TAKE_PUCK);
 		}
 	}
+
+
+
 	
 	// Тактика Защитника
 	if (self.getTeammateIndex() == defence){
 		
-		double Speed = self.getDistanceTo(Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2) / 200;
+		
 		if (flag == true){
 
-			if (self.getX() > (Me.getNetRight() + 60) & self.getX() < (Me.getNetRight() + 120) & self.getY() > (Me.getNetTop() + 70) & self.getY() < (Me.getNetBottom() - 70)){
+			if (HockFrontOfMyGoal(self,Me)==true){
 				move.setTurn(self.getAngleTo(world.getPuck()));
 				move.setAction(TAKE_PUCK);
 			}
 			else{
 				move.setTurn(self.getAngleTo(Me.getNetRight() + 90, world.getHeight() / 2));
-				if (Speed > 1.0){ Speed = 1.0; }
-				move.setSpeedUp(Speed);
+				move.setSpeedUp(SpeedGradualDecrease(self,Me));
 			}
 		}
 		else{
 			
-
-			if (self.getX() > (Me.getNetRight() + 60) & self.getX() < (Me.getNetRight() + 120) & self.getY() > (Me.getNetTop() + 40) & self.getY() < (Me.getNetBottom() - 40)){
+			
+			if (HockFrontOfMyGoal(self,Me)==true){
 				move.setTurn(self.getAngleTo(world.getPuck()));
 				move.setAction(TAKE_PUCK);
 			}
 			else{
 				move.setTurn(self.getAngleTo(Me.getNetRight() + 90, world.getHeight() / 2));
-				if (Speed > 1.0){ Speed = 1.0; }
-				move.setSpeedUp(Speed);
+				
+				move.setSpeedUp(SpeedGradualDecrease(self, Me));
 			}
 			
 		}
