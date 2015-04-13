@@ -102,18 +102,26 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 		fout.close();
 	}
 
+	//+ rival.getNetBottom()
 
 
-
-	
+	double Y_move = (world.getWidth() - rival.getNetBottom()) / 2  ;
+	double X_move = rival.getNetFront() - (world.getWidth() - rival.getNetBottom());
 	// Тактика Нападающего
 	if (self.getTeammateIndex() == attack){
 		if (flag == true){
-			move.setTurn(self.getAngleTo(world.getWidth(), world.getHeight() / 2));
-			if (self.getX() > world.getHeight() / 2){
+			if (self.getY() > world.getWidth() / 2){
+				Y_move += rival.getNetBottom();
+			}
+			
+			
+			move.setTurn(self.getAngleTo(X_move,Y_move));
+			if (self.getX() > X_move){
+		
 				move.setAction(STRIKE);
 			} else{
 				move.setSpeedUp(1.0);
+
 			}
 		}
 		else{
