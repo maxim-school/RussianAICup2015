@@ -22,7 +22,10 @@ double FriendIndex(const Hockeyist& self){
 
 
 bool HockFrontOfMyGoal(const Hockeyist& self, const Player& Me){
-	if (self.getX() > (Me.getNetRight() + 60) & self.getX() < (Me.getNetRight() + 120) & self.getY() > (Me.getNetTop() + 40) & self.getY() < (Me.getNetBottom() - 40)){
+	if ((self.getX() > (Me.getNetRight() + 60))
+		& (self.getX() < (Me.getNetRight() + 120))
+		& (self.getY() > (Me.getNetTop() + 40))
+		& (self.getY() < (Me.getNetBottom() - 40))){
 		return true;
 	}
 	else{
@@ -30,8 +33,8 @@ bool HockFrontOfMyGoal(const Hockeyist& self, const Player& Me){
 	}
 }
 
-double SpeedGradualDecrease(const Hockeyist& self, const Player& Me, double X, double Y){
-	double Speed = self.getDistanceTo(X,Y ) / 200;
+double SpeedGradualDecrease(const Hockeyist& self, double X, double Y){
+	double Speed = self.getDistanceTo(X,Y ) / 300;
 	if (Speed > 1.0){ Speed = 1.0; }
 	return Speed;
 }
@@ -115,27 +118,29 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	// Тактика Нападающего
 	if (self.getTeammateIndex() == attack){
 		if (flag == true){
-			if (self.getY() > (world.getHeight() / 2)-150){
+			if (self.getY() > 460){
 				Y_move += rival.getNetBottom()-180;
 				a = Me.getNetTop();
 			}
-			if (self.getDistanceTo(X_move, Y_move)>50){
+			
+			if ((self.getDistanceTo(X_move, Y_move)>70) & (self.getX()<1050)){
 				move.setTurn(self.getAngleTo(X_move, Y_move));
-				move.setSpeedUp(SpeedGradualDecrease(self, Me,X_move ,Y_move ));
+				move.setSpeedUp(SpeedGradualDecrease(self,X_move ,Y_move ));
+			
 			}
 			else{
 				int ang;
 				move.setTurn(self.getAngleTo(rival.getNetFront(),a));
 				if (self.getAngleTo(rival.getNetFront(), a) > 0){ ang = 1; }
 				else{ ang = -1; }
-				if (ang*self.getAngleTo(rival.getNetFront(), a)< PI / 16){ move.setAction(STRIKE); }
-				///// Если это добавить, то не работает при позиции сверху              &self.getAngleTo(world.getWidth(), world.getHeight() / 2)>-PI / 8
+				if (ang*self.getAngleTo(rival.getNetFront(), a)< PI / 180){ move.setAction(STRIKE); }
+				
 			}
 			
 		}
 		else{
 			move.setTurn(self.getAngleTo(world.getPuck()));
-			move.setSpeedUp(0.7);
+			move.setSpeedUp(1.0);
 			move.setAction(TAKE_PUCK);
 		}
 	}
@@ -155,7 +160,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			}
 			else{
 				move.setTurn(self.getAngleTo(Me.getNetRight() + 90, world.getHeight() / 2));
-				move.setSpeedUp(SpeedGradualDecrease(self, Me, Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2));
+				move.setSpeedUp(SpeedGradualDecrease(self, Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2));
 			}
 		}
 		else{
@@ -168,7 +173,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			else{
 				move.setTurn(self.getAngleTo(Me.getNetRight() + 90, world.getHeight() / 2));
 				
-				move.setSpeedUp(SpeedGradualDecrease(self, Me, Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2));
+				move.setSpeedUp(SpeedGradualDecrease(self, Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2));
 			}
 			
 		}
