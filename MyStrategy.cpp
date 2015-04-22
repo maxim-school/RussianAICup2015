@@ -165,7 +165,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	//double PuckSpeedX = world.getPuck.getSpeedX() ; 
 	//double PuckSpeedY = world.getPuck.getSpeedY();
 	//double PuckSpeed = CalPSpeed(PuckSpeedX, PuckSpeedY);  // CalPSpeed = calculate puck speed  
-
+	world.getPuck.getSpeedX();
 	// Тактика Защитника	
 	if (self.getTeammateIndex() == defence){
 
