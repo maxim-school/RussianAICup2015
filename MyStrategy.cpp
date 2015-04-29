@@ -163,8 +163,8 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 
 
 	double PuckSpeedX = Puck_Obj.getSpeedX() ; 
-	//double PuckSpeedY = world.getPuck.getSpeedY();
-	//double PuckSpeed = CalPSpeed(PuckSpeedX, PuckSpeedY);  // CalPSpeed = calculate puck speed  
+	double PuckSpeedY = Puck_Obj.getSpeedY();
+	double PuckSpeed = CalPSpeed(PuckSpeedX, PuckSpeedY);  // CalPSpeed = calculate puck speed  
 	
 	// Тактика Защитника	
 	if (self.getTeammateIndex() == defence){
@@ -173,7 +173,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			move.setTurn(self.getAngleTo(world.getPuck()));
 			if ((MyHocHavePuck == false)
 				&(RivalHocHavePuck == false)
-				/*&(PuckSpeed > 3.0)*/){
+				&(PuckSpeed > 3.0)){
 				move.setTurn(self.getAngleTo(world.getPuck()));
 				move.setAction(SWING);
 				if (self.getDistanceTo(world.getPuck()) < game.getStickLength()){ move.setAction(STRIKE); }
@@ -188,7 +188,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 
 		if ((MyHocHavePuck == false)
 			&(RivalHocHavePuck == false)
-			/*&(PuckSpeed < 2.0)*/
+			&(PuckSpeed < 2.0)
 			&(self.getDistanceTo(world.getPuck()) < 100)){
 			move.setTurn(self.getAngleTo(world.getPuck()));
 			move.setAction(TAKE_PUCK);
