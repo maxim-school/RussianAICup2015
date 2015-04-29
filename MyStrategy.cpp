@@ -54,7 +54,7 @@ double SpeedGradualDecrease(const Hockeyist& self, double X, double Y){
 
 void MyStrategy::move(const Hockeyist& self, const World& world, const Game& game, Move& move) {
 
- 
+	Unit Puck_Obj = world.getPuck();
 	Player Me = world.getMyPlayer();
 	Player rival = world.getOpponentPlayer();   // RIVAL - "Противник"
 	int defence=1;
@@ -128,7 +128,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 
 	// Тактика Нападающего
 	if (self.getTeammateIndex() == attack){
-
+		
 		/*if (MyHocHavePuck == true){
 			if (self.getY() > 460){
 				Y_move += rival.getNetBottom()-180;
@@ -162,10 +162,10 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 
 
 
-	//double PuckSpeedX = world.getPuck.getSpeedX() ; 
+	double PuckSpeedX = Puck_Obj.getSpeedX() ; 
 	//double PuckSpeedY = world.getPuck.getSpeedY();
 	//double PuckSpeed = CalPSpeed(PuckSpeedX, PuckSpeedY);  // CalPSpeed = calculate puck speed  
-	world.getPuck.getSpeedX();
+	
 	// Тактика Защитника	
 	if (self.getTeammateIndex() == defence){
 
