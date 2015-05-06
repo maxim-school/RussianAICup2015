@@ -173,10 +173,14 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			move.setTurn(self.getAngleTo(world.getPuck()));
 			if ((MyHocHavePuck == false)
 				&(RivalHocHavePuck == false)
+				&(self.getDistanceTo(Puck_Obj)<250)
 				&(PuckSpeed > 3.0)){
 				move.setTurn(self.getAngleTo(world.getPuck()));
 				move.setAction(SWING);
 				if (self.getDistanceTo(world.getPuck()) < game.getStickLength()){ move.setAction(STRIKE); }
+			}
+			if(self.getDistanceTo(Puck_Obj)>250){
+				move.setAction(CANCEL_STRIKE);
 			}
 
 		}
