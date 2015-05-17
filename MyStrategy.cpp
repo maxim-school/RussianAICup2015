@@ -129,7 +129,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	// Тактика Нападающего
 	if (self.getTeammateIndex() == attack){
 		
-		/*if (MyHocHavePuck == true){
+		if (MyHocHavePuck == true){
 			if (self.getY() > 460){
 				Y_move += rival.getNetBottom()-180;
 				a = Me.getNetTop();
@@ -154,7 +154,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			move.setTurn(self.getAngleTo(world.getPuck()));
 			move.setSpeedUp(1.0);
 			move.setAction(TAKE_PUCK);
-		}*/
+		}
 	}
 
 
