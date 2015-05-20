@@ -129,7 +129,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	// Тактика Нападающего
 	if (self.getTeammateIndex() == attack){
 		
-		/*if (MyHocHavePuck == true){
+		if (MyHocHavePuck == true){
 			if (self.getY() > 460){
 				Y_move += rival.getNetBottom()-180;
 				a = Me.getNetTop();
@@ -145,7 +145,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 				move.setTurn(self.getAngleTo(rival.getNetFront(),a));
 				if (self.getAngleTo(rival.getNetFront(), a) > 0){ ang = 1; }
 				else{ ang = -1; }
-				if (ang*self.getAngleTo(rival.getNetFront(), a)< PI / 180){ move.setAction(STRIKE); }
+				if (ang*self.getAngleTo(rival.getNetFront(), a)< PI / 200){ move.setAction(STRIKE); }
 
 			}
 			
@@ -154,7 +154,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			move.setTurn(self.getAngleTo(world.getPuck()));
 			move.setSpeedUp(1.0);
 			move.setAction(TAKE_PUCK);
-		}*/
+		}
 	}
 
 
@@ -169,7 +169,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 	// Тактика Защитника	
 	if (self.getTeammateIndex() == defence){
 
-		if (HockFrontOfMyGoal(self, Me) == true){
+		/*if (HockFrontOfMyGoal(self, Me) == true){
 			move.setTurn(self.getAngleTo(world.getPuck()));
 			if ((MyHocHavePuck == false)
 				&(RivalHocHavePuck == false)
@@ -189,7 +189,7 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			move.setSpeedUp(SpeedGradualDecrease(self, Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2));
 		}
 
-
+		
 		if ((MyHocHavePuck == false)
 			&(RivalHocHavePuck == false)
 			&(PuckSpeed < 2.0)
@@ -197,19 +197,20 @@ void MyStrategy::move(const Hockeyist& self, const World& world, const Game& gam
 			move.setTurn(self.getAngleTo(world.getPuck()));
 			move.setAction(TAKE_PUCK);
 		}
+		*/
 
 
 
-
-		/*if (MyHocHavePuck == true){
+		
 			if (HockFrontOfMyGoal(self,Me)==true){
 				move.setTurn(self.getAngleTo(world.getPuck()));
+				move.setAction(TAKE_PUCK);
 			}
 			else{
 				move.setTurn(self.getAngleTo(Me.getNetRight() + 90, world.getHeight() / 2));
 				move.setSpeedUp(SpeedGradualDecrease(self, Me.getNetRight() + 90, (Me.getNetTop() + Me.getNetBottom()) / 2));
 			}
-		}
+		/*
 		else if (RivalHocHavePuck == true){
 			
 		}
